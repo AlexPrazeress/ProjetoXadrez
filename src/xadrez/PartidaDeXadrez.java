@@ -1,6 +1,5 @@
 package xadrez;
 
-import JogoDeTabuleiro.Posicao;
 import JogoDeTabuleiro.Tabuleiro;
 import xadrez.pecas.Rei;
 import xadrez.pecas.Torre;
@@ -24,10 +23,24 @@ public class PartidaDeXadrez {
 		return mat;
 	}
 	
+	private void coloqueNovaPeca(char coluna, int linha, PecaDeXadrez peca) {
+		tabuleiro.colocarPeca(peca, new PosicaoDoXadrez(linha, coluna).toPosicao());
+	}
+	
 	private void iniciarPartida() {
-		tabuleiro.colocarPeca(new Torre(tabuleiro, Color.WHITE), new Posicao(2, 1));
-		tabuleiro.colocarPeca(new Rei(tabuleiro, Color.BLACK), new Posicao(0, 4)); 
-		tabuleiro.colocarPeca(new Rei(tabuleiro, Color.WHITE), new Posicao(7, 4)); 
+		coloqueNovaPeca('c', 1, new Torre(tabuleiro, Color.WHITE));
+		coloqueNovaPeca('c', 2, new Torre(tabuleiro, Color.WHITE));
+		coloqueNovaPeca('d', 2, new Torre(tabuleiro, Color.WHITE));
+		coloqueNovaPeca('e', 2, new Torre(tabuleiro, Color.WHITE));
+		coloqueNovaPeca('e', 1, new Torre(tabuleiro, Color.WHITE));
+		coloqueNovaPeca('d', 1, new Torre(tabuleiro, Color.WHITE));
+		
+		coloqueNovaPeca('c', 7, new Torre(tabuleiro, Color.BLACK));
+		coloqueNovaPeca('c', 8, new Torre(tabuleiro, Color.BLACK));
+		coloqueNovaPeca('d', 7, new Torre(tabuleiro, Color.BLACK));
+		coloqueNovaPeca('e', 7, new Torre(tabuleiro, Color.BLACK));
+		coloqueNovaPeca('e', 8, new Torre(tabuleiro, Color.BLACK));
+		coloqueNovaPeca('d', 8, new Torre(tabuleiro, Color.BLACK));
 
 	}
 	
