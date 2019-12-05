@@ -1,5 +1,7 @@
 package xadrez;
 
+import javax.transaction.xa.XAException;
+
 import JogoDeTabuleiro.Peca;
 import JogoDeTabuleiro.Posicao;
 import JogoDeTabuleiro.Tabuleiro;
@@ -28,6 +30,7 @@ public class PartidaDeXadrez {
 		Posicao source = sourcePosicao.toPosicao();
 		Posicao target = targetPosicao.toPosicao();
 		validacaoDaPosicaoDeOrigem(source);
+		validacaoTargetPosicao(source, target);
 		Peca capturaDaPeca = fazerMoverAPeca(source, target);
 		return (PecaDeXadrez)capturaDaPeca;
 	}
@@ -47,6 +50,13 @@ public class PartidaDeXadrez {
 			throw new XadrezExcption("Nao existem movimentos possiveis para a peca especifica");
 		}
 	}
+	
+	private void validacaoTargetPosicao(Posicao source, Posicao target) {
+		if(!tabuleiro.peca(source).possiveisMovimento(target)) {
+			throw new XadrezExcption("A peca escolhida nao pode se mover para a posicao de destino ");
+		}
+	}
+	
 	private void coloqueNovaPeca(char coluna, int linha, PecaDeXadrez peca) {
 		tabuleiro.colocarPeca(peca, new PosicaoDoXadrez(linha, coluna).toPosicao());
 	}
