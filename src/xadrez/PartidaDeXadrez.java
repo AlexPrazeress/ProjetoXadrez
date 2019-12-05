@@ -1,7 +1,5 @@
 package xadrez;
 
-import javax.transaction.xa.XAException;
-
 import JogoDeTabuleiro.Peca;
 import JogoDeTabuleiro.Posicao;
 import JogoDeTabuleiro.Tabuleiro;
@@ -24,6 +22,12 @@ public class PartidaDeXadrez {
 			}
 		}
 		return mat;
+	}
+	
+	public boolean[][] possiveisMovimentos(PosicaoDoXadrez sourcePosicao) {
+		Posicao posicao = sourcePosicao.toPosicao();
+		validacaoDaPosicaoDeOrigem(posicao);
+		return tabuleiro.peca(posicao).possiveisMovimentos();
 	}
 	
 	public PecaDeXadrez ExecutarXadrez(PosicaoDoXadrez sourcePosicao, PosicaoDoXadrez targetPosicao) {

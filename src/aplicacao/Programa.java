@@ -2,6 +2,7 @@ package aplicacao;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.UUID;
 
 import xadrez.PartidaDeXadrez;
 import xadrez.PecaDeXadrez;
@@ -22,6 +23,9 @@ public class Programa {
 				System.out.println("Source: ");
 				PosicaoDoXadrez source = Ui.lerPosicaoDoUsuario(sc);
 				
+				boolean[][] possiveisMovimentos = partidaDeXadrez.possiveisMovimentos(source);
+				Ui.limparTela();
+				Ui.impressaoDeTabuleiro(partidaDeXadrez.getPecas(), possiveisMovimentos);
 				System.out.println();
 				System.out.println("Target: ");
 				PosicaoDoXadrez target = Ui.lerPosicaoDoUsuario(sc);
