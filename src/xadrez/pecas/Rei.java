@@ -19,7 +19,7 @@ public class Rei extends PecaDeXadrez {
 
 	private boolean podeMover(Posicao posicao) {
 		PecaDeXadrez p = (PecaDeXadrez)getTabuleiro().peca(posicao);
-		return p != null || p.getColor() != getColor();
+		return p == null || p.getColor() != getColor();
 	}
  
 	@Override
@@ -41,13 +41,13 @@ public class Rei extends PecaDeXadrez {
 		}
 
 		// movendo para esquerda
-		p.setValues(posicao.getLinha() - 1, posicao.getColuna() - 1);
+		p.setValues(posicao.getLinha(), posicao.getColuna() - 1);
 		if (getTabuleiro().existeAPosicao(p) && podeMover(p)) {
 			mat[p.getLinha()][p.getColuna()] = true;
 		}
 
 		// movendo para direita
-		p.setValues(posicao.getLinha() - 1, posicao.getColuna() + 1);
+		p.setValues(posicao.getLinha(), posicao.getColuna() + 1);
 		if (getTabuleiro().existeAPosicao(p) && podeMover(p)) {
 			mat[p.getLinha()][p.getColuna()] = true;
 		}
