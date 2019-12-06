@@ -40,7 +40,7 @@ public class Ui {
 			String s = sc.nextLine();
 			char coluna = s.charAt(0);
 			int linha = Integer.parseInt(s.substring(1));
-			return new PosicaoDoXadrez(linha, coluna);
+			return new PosicaoDoXadrez(coluna, linha);
 		
 		}
 		catch(RuntimeException e) {

@@ -3,6 +3,7 @@ package xadrez;
 import JogoDeTabuleiro.Peca;
 import JogoDeTabuleiro.Posicao;
 import JogoDeTabuleiro.Tabuleiro;
+import xadrez.pecas.Rei;
 import xadrez.pecas.Torre;
 
 public class PartidaDeXadrez {
@@ -29,7 +30,7 @@ public class PartidaDeXadrez {
 		validacaoDaPosicaoDeOrigem(posicao);
 		return tabuleiro.peca(posicao).possiveisMovimentos();
 	}
-	
+
 	public PecaDeXadrez ExecutarXadrez(PosicaoDoXadrez sourcePosicao, PosicaoDoXadrez targetPosicao) {
 		Posicao source = sourcePosicao.toPosicao();
 		Posicao target = targetPosicao.toPosicao();
@@ -62,7 +63,7 @@ public class PartidaDeXadrez {
 	}
 	
 	private void coloqueNovaPeca(char coluna, int linha, PecaDeXadrez peca) {
-		tabuleiro.colocarPeca(peca, new PosicaoDoXadrez(linha, coluna).toPosicao());
+		tabuleiro.colocarPeca(peca, new PosicaoDoXadrez(coluna, linha).toPosicao());
 	}
 	
 	private void iniciarPartida() {
@@ -71,14 +72,14 @@ public class PartidaDeXadrez {
 		coloqueNovaPeca('d', 2, new Torre(tabuleiro, Color.WHITE));
 		coloqueNovaPeca('e', 2, new Torre(tabuleiro, Color.WHITE));
 		coloqueNovaPeca('e', 1, new Torre(tabuleiro, Color.WHITE));
-		coloqueNovaPeca('d', 1, new Torre(tabuleiro, Color.WHITE));
+		coloqueNovaPeca('d', 1, new Rei(tabuleiro, Color.WHITE));
 		
 		coloqueNovaPeca('c', 7, new Torre(tabuleiro, Color.BLACK));
 		coloqueNovaPeca('c', 8, new Torre(tabuleiro, Color.BLACK));
 		coloqueNovaPeca('d', 7, new Torre(tabuleiro, Color.BLACK));
 		coloqueNovaPeca('e', 7, new Torre(tabuleiro, Color.BLACK));
 		coloqueNovaPeca('e', 8, new Torre(tabuleiro, Color.BLACK));
-		coloqueNovaPeca('d', 8, new Torre(tabuleiro, Color.BLACK));
+		coloqueNovaPeca('d', 8, new Rei(tabuleiro, Color.BLACK));
 
 	}
 	

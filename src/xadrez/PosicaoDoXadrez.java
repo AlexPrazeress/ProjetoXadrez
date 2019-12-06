@@ -4,15 +4,16 @@ import JogoDeTabuleiro.Posicao;
 
 public class PosicaoDoXadrez {
 	
-	private int coluna;
+	private char coluna;
 	private int linha;
 	
-	public PosicaoDoXadrez(int linha, int coluna) {
+	public PosicaoDoXadrez(char coluna, int linha) {
 		if(coluna < 'a' || coluna > 'h' || linha < 1 || linha > 8) {
 			throw new XadrezExcption("Erro instanciando a posicao do xadrez. valores validos de a1 ate h8");
 		}
-		this.linha = linha;
 		this.coluna = coluna;
+		this.linha = linha;
+		
 	}
 
 	public int getColuna() {
