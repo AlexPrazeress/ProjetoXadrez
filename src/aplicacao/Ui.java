@@ -1,7 +1,9 @@
 package aplicacao;
 
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 import xadrez.Color;
 import xadrez.PartidaDeXadrez;
@@ -95,5 +97,18 @@ public class Ui {
         }
         System.out.print(" ");
 	}
-
+	
+	private static void imprimirPecasCapturadas(List<PecaDeXadrez> captura);
+		List<PecaDeXadrez> branca = captura.stream().filter(x -> x.getColor() == Color.WHITE).collect(Collectors.toList());
+		List<PecaDeXadrez> preta = captura.stream().filter(x -> x.getColor() == Color.BLACK).collect(Collectors.toList());
+		System.out.println("Captura das pecas:");
+		System.out.print("Branca: ");
+		System.out.print(ANSI_WHITE);
+		System.out.println(Arrays.toString(branca.toArray());
+		System.out.println(ANSI_RESET);
+		System.out.print("Preta: ");
+		System.out.print(ANSI_YELLOW);
+		System.out.println(Arrays.toString(preta.toArray());
+		System.out.println(ANSI_RESET);
+	}
 }
